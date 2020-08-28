@@ -54,6 +54,7 @@ fn main() {
         .warnings(false)
         .extra_warnings(false)
         .static_flag(true)
+        .define("ADD_", None)
         .include(cblas_dir.join("include"))
         .file(cblas_dir.join("src/cblas_caxpy.c"))
         .file(cblas_dir.join("src/cblas_ccopy.c"))
