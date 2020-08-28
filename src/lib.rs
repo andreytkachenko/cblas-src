@@ -1,3 +1,4 @@
+
 #[cfg(test)]
 mod tests {
     extern crate openblas_src;
@@ -12,6 +13,7 @@ mod tests {
             2.0, 5.0,
             3.0, 6.0,
         ];
+        
         let b = vec![
             1.0, 5.0,  9.0,
             2.0, 6.0, 10.0,
@@ -24,11 +26,17 @@ mod tests {
             0.0, 7.0,
             4.0, 2.0,
         ];
+
+        let sdot_res = unsafe { 
+            ddot(6, &a, 1, &a, 1) 
+        };
         
         unsafe {
             dgemm(Layout::ColumnMajor, Transpose::None, Transpose::None,
                 m, n, k, 1.0, &a, m, &b, k, 1.0, &mut c, m);
         }
+
+        assert_eq!(sdot_res, 91.0);
         
         assert!(
             c == vec![
