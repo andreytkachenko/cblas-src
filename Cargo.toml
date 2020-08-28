@@ -4,6 +4,8 @@ version = "0.1.0"
 authors = ["Andrey Tkachenko <andreytkachenko64@gmail.com>"]
 edition = "2018"
 build="build.rs"
+description="C interface to Legacy BLAS"
+license="BSD-3-Clause"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
