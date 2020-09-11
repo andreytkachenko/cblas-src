@@ -6,7 +6,7 @@ use std::process::Command;
 use std::{env, fs, io};
 use tar::Archive;
 
-const CBLAS_SRC: &str = "http://www.netlib.org/blas/blast-forum/cblas.tgz";
+const CBLAS_SRC: &str = "https://codeload.github.com/andreytkachenko/cblas/tar.gz/v3.6.0";
 
 fn download<P: AsRef<Path>>(source_url: &str, target_file: P) -> anyhow::Result<()> {
     let f = fs::File::create(&target_file)?;
@@ -42,7 +42,7 @@ fn extract<P1: AsRef<Path>, P2: AsRef<Path>>(filename: P1, outpath: P2) -> anyho
 fn main() {
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
     let cblas_name = out_path.join("cblas.tgz");
-    let cblas_dir = out_path.join("CBLAS");
+    let cblas_dir = out_path.join("cblas-3.6.0");
 
     if !cblas_dir.exists() {
         download(CBLAS_SRC, &cblas_name).unwrap();
