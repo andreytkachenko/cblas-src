@@ -1,7 +1,7 @@
 [package]
 name = "cblas-src"
 version = "0.1.3"
-authors = ["Andrey Tkachenko <andreytkachenko64@gmail.com>"]
+authors = ["Andrey Tkachenko <andrey@aidev.ru>"]
 edition = "2018"
 build="build.rs"
 description="C interface to Legacy BLAS"
