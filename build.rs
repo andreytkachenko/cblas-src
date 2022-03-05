@@ -6,6 +6,7 @@ use std::process::Command;
 use std::{env, fs, io};
 use tar::Archive;
 
+
 const CBLAS_SRC: &str = "https://codeload.github.com/andreytkachenko/cblas/tar.gz/v3.6.0";
 
 fn download<P: AsRef<Path>>(source_url: &str, target_file: P) -> anyhow::Result<()> {
@@ -49,30 +50,49 @@ fn main() {
         extract(cblas_name, &out_path).unwrap();
     }
 
-
     Command::new("gfortran")
         .current_dir(cblas_dir.join("src"))
         .arg("-O3")
-        .arg("-c").arg(cblas_dir.join("src/cdotcsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/cdotusub.f"))
-        .arg("-c").arg(cblas_dir.join("src/dasumsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/ddotsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/dnrm2sub.f"))
-        .arg("-c").arg(cblas_dir.join("src/dsdotsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/dzasumsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/dznrm2sub.f"))
-        .arg("-c").arg(cblas_dir.join("src/icamaxsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/idamaxsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/isamaxsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/izamaxsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/sasumsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/scasumsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/scnrm2sub.f"))
-        .arg("-c").arg(cblas_dir.join("src/sdotsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/sdsdotsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/snrm2sub.f"))
-        .arg("-c").arg(cblas_dir.join("src/zdotcsub.f"))
-        .arg("-c").arg(cblas_dir.join("src/zdotusub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/cdotcsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/cdotusub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/dasumsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/ddotsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/dnrm2sub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/dsdotsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/dzasumsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/dznrm2sub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/icamaxsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/idamaxsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/isamaxsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/izamaxsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/sasumsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/scasumsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/scnrm2sub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/sdotsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/sdsdotsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/snrm2sub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/zdotcsub.f"))
+        .arg("-c")
+        .arg(cblas_dir.join("src/zdotusub.f"))
         .status()
         .expect("fortran failed");
 
