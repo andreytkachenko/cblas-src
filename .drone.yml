@@ -1,0 +1,13 @@
+kind: pipeline
+name: default
+
+steps:
+- name: build
+  image: hub.aidev.ru/rust-blas
+  commands:
+    - cargo build --verbose --all
+
+- name: fmt-check
+  image: hub.aidev.ru/rust-blas
+  commands:
+    - cargo fmt --all -- --check
